@@ -5,6 +5,7 @@ class CuisinesController < ApplicationController
 
   def show
     @cuisine = Cuisine.find(params[:id])
+    @dish=Dish.new
   end
 
   def new
@@ -16,7 +17,7 @@ class CuisinesController < ApplicationController
     @cuisine.name = params[:name]
 
     if @cuisine.save
-      redirect_to "/cuisines", :notice => "Cuisine created successfully."
+      redirect_to :back, :notice => "Cuisine created successfully."
     else
       render 'new'
     end

@@ -5,6 +5,7 @@ class VenuesController < ApplicationController
 
   def show
     @venue = Venue.find(params[:id])
+    @favorite=Favorite.new
   end
 
   def new
@@ -18,7 +19,7 @@ class VenuesController < ApplicationController
     @venue.neighborhood_id = params[:neighborhood_id]
 
     if @venue.save
-      redirect_to "/venues", :notice => "Venue created successfully."
+      redirect_to :back, :notice => "Venue created successfully."
     else
       render 'new'
     end

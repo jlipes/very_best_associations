@@ -5,6 +5,7 @@ class DishesController < ApplicationController
 
   def show
     @dish = Dish.find(params[:id])
+    @favorite=Favorite.new
   end
 
   def new
@@ -17,7 +18,7 @@ class DishesController < ApplicationController
     @dish.cuisine_id = params[:cuisine_id]
 
     if @dish.save
-      redirect_to "/dishes", :notice => "Dish created successfully."
+      redirect_to :back, :notice => "Dish created successfully."
     else
       render 'new'
     end

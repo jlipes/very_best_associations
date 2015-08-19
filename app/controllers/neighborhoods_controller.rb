@@ -5,6 +5,7 @@ class NeighborhoodsController < ApplicationController
 
   def show
     @neighborhood = Neighborhood.find(params[:id])
+    @venue=Venue.new
   end
 
   def new
@@ -17,7 +18,7 @@ class NeighborhoodsController < ApplicationController
     @neighborhood.city = params[:city]
 
     if @neighborhood.save
-      redirect_to "/neighborhoods", :notice => "Neighborhood created successfully."
+      redirect_to :back, :notice => "Neighborhood created successfully."
     else
       render 'new'
     end
